@@ -44,16 +44,17 @@ class UpdateProduct(graphene.Mutation):
     def mutate(self, info, id, name=None, price=None, quantity=None, category=None):
         product = Product.query.get(id)
         if product:
-            if name:
+            if name is not None:
                 product.name = name
-            if price:
+            if price is not None:
                 product.price = price
-            if quantity:
+            if quantity is not None:
                 product.quantity = quantity
-            if category:
+            if category is not None:
                 product.category = category
             db.session.commit()
-        return UpdateProduct(product=product)
+            return UpdateProduct(product=product)
+        return UpdateProduct(product=None)  # Return None if product is not found
 
 class DeleteProduct(graphene.Mutation):
     class Arguments:

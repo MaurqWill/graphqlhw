@@ -16,5 +16,5 @@ class Product(Base):
     quantity: Mapped[int] = mapped_column(db.Integer)
     category: Mapped[str] = mapped_column(db.String(255))
 
-def __str__(self):
-    return f"Product(id={self.id}, name='{self.name}', price={self.price}, quantity={self.quantity}, category='{self.category}')"
+    def __str__(self):
+        return f"Product(id={self.id}, name='{self.name}', price={self.price}, quantity={self.quantity}, category='{self.category}')"
