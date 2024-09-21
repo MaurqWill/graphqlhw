@@ -3,6 +3,7 @@ import graphene
 from schemas import Query, Mutation
 from flask_graphql import GraphQLView
 from models import db
+from flask_cors import CORS
 
 app = Flask(__name__)
 
@@ -10,6 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:C0dingTemp0
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
+CORS(app)
 
 # Set up the GraphQL schema
 schema = graphene.Schema(query=Query, mutation=Mutation)

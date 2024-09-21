@@ -10,11 +10,12 @@ db = SQLAlchemy(model_class=Base)
 
 class Product(Base):
     __tablename__ = 'products'
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(db.String(255))
     price: Mapped[float] = mapped_column(db.Float)
     quantity: Mapped[int] = mapped_column(db.Integer)
     category: Mapped[str] = mapped_column(db.String(255))
+
 
     def __str__(self):
         return f"Product(id={self.id}, name='{self.name}', price={self.price}, quantity={self.quantity}, category='{self.category}')"
